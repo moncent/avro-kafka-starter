@@ -1,4 +1,5 @@
 # AvroKafka
+[![Java CI with Maven](https://github.com/moncent/avro-kafka-starter/actions/workflows/maven.yml/badge.svg?branch=develop)](https://github.com/moncent/avro-kafka-starter/actions/workflows/maven.yml)
 
 Программа предназначена для отправки своих сообщений в бинарном формате avro в топик кафки.
 
