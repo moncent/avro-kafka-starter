@@ -1,7 +1,7 @@
-package local.home.kafka;
+package com.develop.home.kafka;
 
-import local.home.config.lang.LanguageProps;
-import local.home.kafka.config.KafkaProducerProperties;
+import com.develop.home.config.lang.LanguageProps;
+import com.develop.home.kafka.config.KafkaProducerProperties;
 import lombok.RequiredArgsConstructor;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;

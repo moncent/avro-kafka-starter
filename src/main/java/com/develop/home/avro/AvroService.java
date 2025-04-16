@@ -1,4 +1,4 @@
-package local.home.avro;
+package com.develop.home.avro;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.avro.Schema;

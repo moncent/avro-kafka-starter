@@ -1,6 +1,6 @@
-package local.home.avro;
+package com.develop.home.avro;
 
-import local.home.console.UserPaths;
+import com.develop.home.console.UserPaths;
 import lombok.NoArgsConstructor;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericDatumWriter;

@@ -9,7 +9,7 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
-  <groupId>local.local.home</groupId>
+  <groupId>com.develop.home</groupId>
   <artifactId>avro-kafka-starter</artifactId>
   <version>1.0-SNAPSHOT</version>
 
@@ -78,8 +78,8 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <mainClass>local.home.KafkaStarter</mainClass>
-          </configuration>
+          <mainClass>com.develop.home.App</mainClass>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

@@ -1,4 +1,4 @@
-package local.home.config.lang;
+package com.develop.home.config.lang;
 
 public interface LanguageProps {
     String getMenu();

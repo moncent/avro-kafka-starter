@@ -1,6 +1,6 @@
-package local.home.kafka.config;
+package com.develop.home.kafka.config;
 
-import local.home.avro.AvroBinarySerializer;
+import com.develop.home.avro.AvroBinarySerializer;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.config.SslConfigs;

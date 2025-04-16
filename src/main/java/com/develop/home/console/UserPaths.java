@@ -1,6 +1,6 @@
-package local.home.console;
+package com.develop.home.console;
 
-import local.home.utils.StringUtils;
+import com.develop.home.utils.StringUtils;
 import lombok.Getter;
 
 

@@ -1,4 +1,4 @@
-package local.home.config.lang;
+package com.develop.home.config.lang;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

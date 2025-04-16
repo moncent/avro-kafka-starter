@@ -1,8 +1,8 @@
-package local.home.console;
+package com.develop.home.console;
 
-import local.home.avro.AvroService;
-import local.home.config.lang.LanguageProps;
-import local.home.console.utils.ConsoleUtils;
+import com.develop.home.avro.AvroService;
+import com.develop.home.config.lang.LanguageProps;
+import com.develop.home.console.utils.ConsoleUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

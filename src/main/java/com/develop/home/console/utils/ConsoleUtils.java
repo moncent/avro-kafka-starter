@@ -1,6 +1,6 @@
-package local.home.console.utils;
+package com.develop.home.console.utils;
 
-import local.home.config.lang.LanguageProps;
+import com.develop.home.config.lang.LanguageProps;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

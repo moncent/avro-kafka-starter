@@ -1,4 +1,4 @@
-package local.home.config.lang;
+package com.develop.home.config.lang;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@ConditionalOnProperty(value = "app-language", havingValue = "ru", matchIfMissing = true)
-@PropertySource(value = "classpath:lang_ru.properties", encoding = "UTF-8")
+@ConditionalOnProperty(value = "app-language", havingValue = "en", matchIfMissing = false)
+@PropertySource(value = "classpath:lang_en.properties", encoding = "UTF-8")
 @Getter
 @Setter
 @ConfigurationProperties
-public class RuProperties extends LanguageProperties {
+public class EnProperties extends LanguageProperties {
 
 }

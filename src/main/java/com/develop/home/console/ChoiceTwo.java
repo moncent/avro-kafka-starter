@@ -1,9 +1,9 @@
-package local.home.console;
+package com.develop.home.console;
 
-import local.home.avro.AvroService;
-import local.home.config.lang.LanguageProps;
-import local.home.console.utils.ConsoleUtils;
-import local.home.kafka.KafkaProducer;
+import com.develop.home.avro.AvroService;
+import com.develop.home.config.lang.LanguageProps;
+import com.develop.home.console.utils.ConsoleUtils;
+import com.develop.home.kafka.KafkaProducer;
 import lombok.RequiredArgsConstructor;
 import org.apache.avro.generic.GenericRecord;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static local.home.utils.StringUtils.*;
+import static com.develop.home.utils.StringUtils.*;
 
 @Component
 @RequiredArgsConstructor

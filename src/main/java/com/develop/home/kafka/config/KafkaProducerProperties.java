@@ -1,4 +1,4 @@
-package local.home.kafka.config;
+package com.develop.home.kafka.config;
 
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;

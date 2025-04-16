@@ -1,4 +1,4 @@
-package local.home.kafka.config;
+package com.develop.home.kafka.config;
 
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.env.PropertiesPropertySource;
