@@ -1,0 +1,4 @@
+/target/
+/.idea/
+/.gigaide/
+/avro_kafka_starter.log

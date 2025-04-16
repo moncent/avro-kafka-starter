@@ -1,0 +1,17 @@
+kafka:
+  producer:
+    bootstrapServers: localhost:9092
+    topic: test_topic
+    key: test_key
+    headers:
+    - header1: value1
+    - header2: value2
+    ssl:
+      enabled: false
+      protocol: TLSv1.2
+      keystore:
+        location: #{null}
+        password: #{null}
+      truststore:
+        location: #{null}
+        password: #{null}
