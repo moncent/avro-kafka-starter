@@ -3,6 +3,7 @@ package com.develop.home.console;
 import com.develop.home.config.lang.LanguageProps;
 import com.develop.home.console.utils.ConsoleUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,9 @@ import java.util.Scanner;
 @Component
 @RequiredArgsConstructor
 public class UserConsole implements CommandLineRunner {
+
+    @Value("${console.encoding:utf-8}")
+    private String encoding;
 
     private final ChoiceOne choiceOne;
     private final ChoiceTwo choiceTwo;
@@ -30,8 +34,7 @@ public class UserConsole implements CommandLineRunner {
     private void init() {
         consoleUtils.menu();
         String choice;
-
-        try (Scanner scanner = new Scanner(System.in)) {
+        try (Scanner scanner = new Scanner(System.in, encoding)) {
             choice = scanner.nextLine();
             while (!"5".equals(choice)) {
                 if (choice.startsWith("1")) {
