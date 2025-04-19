@@ -1,1 +1,1 @@
-java -Dapp-language=ru -Dapp.log.logs=avro_kafka_starter.log -Dapp.log.log-level=info -Dapp.log.max-file-log-size=5MB -Dspring.main.banner-mode=LOG -Dfile.encoding=UTF-8 -Dconsole.encoding=UTF-8 -jar avro-kafka-starter-0.0.1-SNAPSHOT.jar
+java -Dapp-language=ru -Dapp.log.logs=avro_kafka_starter.log -Dapp.log.log-level=info -Dapp.log.max-file-log-size=5MB -Dspring.main.banner-mode=LOG -Dfile.encoding=UTF-8 -Dconsole.encoding=UTF-8 -jar avro-kafka-starter-1.0.0.jar
