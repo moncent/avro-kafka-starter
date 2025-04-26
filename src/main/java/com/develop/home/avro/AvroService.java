@@ -7,7 +7,6 @@ import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.DatumReader;
 import org.apache.avro.io.Decoder;
 import org.apache.avro.io.DecoderFactory;
-import org.apache.avro.util.RandomData;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +32,7 @@ public class AvroService {
              PrintWriter writer = new PrintWriter(jsonFileName, StandardCharsets.UTF_8)) {
             Schema schema = new Schema.Parser().parse(is);
             Iterator<Object> it = new RandomData(schema, 1).iterator();
-            writer.println(it.next());
+            writer.print(it.next());
         }
         return jsonFileName;
     }
