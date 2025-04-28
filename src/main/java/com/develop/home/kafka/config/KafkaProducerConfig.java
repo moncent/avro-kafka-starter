@@ -35,6 +35,8 @@ public class KafkaProducerConfig {
             configProps.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, properties.getSsl().getTruststore().getLocation());
             configProps.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, properties.getSsl().getTruststore().getPassword());
             configProps.put(SslConfigs.SSL_PROTOCOL_CONFIG, properties.getSsl().getProtocol());
+            configProps.put("security.protocol", properties.getSsl().getSecurityProtocol());
+            configProps.put(SslConfigs.SSL_ENDPOINT_IDENTIFICATION_ALGORITHM_CONFIG, properties.getSsl().getEndpointIdentificationAlgorithm());
         }
         return new DefaultKafkaProducerFactory<>(configProps);
     }

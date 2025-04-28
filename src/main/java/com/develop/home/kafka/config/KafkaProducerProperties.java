@@ -33,6 +33,8 @@ public class KafkaProducerProperties {
     @Setter
     public static class SslConfig {
         private Boolean enabled;
+        private String securityProtocol;
+        private String endpointIdentificationAlgorithm;
         private String protocol;
         private KeystoreConfig keystore = new KeystoreConfig();
         private KeystoreConfig truststore = new KeystoreConfig();
@@ -48,9 +50,10 @@ public class KafkaProducerProperties {
     @PostConstruct
     public void postConstruct() {
         log.info("Kafka producer params: bootstrapServers = {}, topic = {}, key = {}, headers = {}, " +
-                "ssl.enabled = {}, ssl.protocol = {}, ssl.keystore.location = {}, ssl.keystore.password = {}, " +
+                "ssl.enabled = {}, ssl.securityProtocol = {}, ssl.endpointIdentificationAlgorithm = {}, ssl.protocol = {}, ssl.keystore.location = {}, ssl.keystore.password = {}, " +
                 "ssl.truststore.location = {}, ssl.truststore.password = {}", getBootstrapServers(), getTopic(), getKey(),
-                getHeaders(), getSsl().getEnabled(), getSsl().getProtocol(), getSsl().getKeystore().getLocation(),
-                getSsl().getKeystore().getPassword(), getSsl().getTruststore().getLocation(), getSsl().getTruststore().getPassword());
+                getHeaders(), getSsl().getEnabled(), getSsl().getSecurityProtocol(), getSsl().getEndpointIdentificationAlgorithm(),
+                getSsl().getProtocol(), getSsl().getKeystore().getLocation(), getSsl().getKeystore().getPassword(),
+                getSsl().getTruststore().getLocation(), getSsl().getTruststore().getPassword());
     }
 }

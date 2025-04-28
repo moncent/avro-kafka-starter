@@ -8,6 +8,8 @@ kafka:
     - header2: value2
     ssl:
       enabled: false
+      securityProtocol: SSL
+      endpointIdentificationAlgorithm: ''
       protocol: TLSv1.2
       keystore:
         location: #{null}
