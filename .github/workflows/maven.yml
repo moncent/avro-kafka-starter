@@ -50,7 +50,7 @@ jobs:
         token: ${{ secrets.TC_CLOUD_TOKEN }}
 
     - name: Build with Maven
-      run: mvn clean package -DskipTests=${{ inputs.without_test }} --file pom.xml --alluredir=allure-results
+      run: mvn clean package -DskipTests=${{ inputs.without_test }} --file pom.xml
 
     - name: Store allure results
       uses: actions/upload-artifact@v4
