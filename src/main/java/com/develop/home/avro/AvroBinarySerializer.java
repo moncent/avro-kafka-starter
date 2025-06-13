@@ -11,12 +11,12 @@ import org.apache.kafka.common.serialization.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 
 @Component
 @NoArgsConstructor
@@ -26,7 +26,7 @@ public class AvroBinarySerializer implements Serializer<GenericRecord> {
     @Override
     public byte[] serialize(String topic, GenericRecord record) {
         byte[] result;
-        try(InputStream avscIs = Files.newInputStream(Paths.get(UserPaths.getInstance().getAvscSchemaPath()))) {
+        try(InputStream avscIs = Files.newInputStream(ResourceUtils.getFile(UserPaths.getInstance().getAvscSchemaPath()).toPath())) {
             Schema schema = new Schema.Parser().parse(avscIs);
             GenericDatumWriter<GenericRecord> datumWriter = new GenericDatumWriter<>(schema);
             try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {

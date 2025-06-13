@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="logs" value="${app.log.logs:-avro_kafka_starter.log}" />
+    <property name="logLevel" value="${app.log.log-level:-info}"/>
+    <property name="maxFileLogSize" value="${app.log.max-file-log-size:-5MB}"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{ISO8601} %-5level %t %C{1}: %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+
+    <root level="${logLevel}">
+        <appender-ref ref="console" />
+    </root>
+
+</configuration>

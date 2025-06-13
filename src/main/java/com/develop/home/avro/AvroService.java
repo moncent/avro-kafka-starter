@@ -9,6 +9,7 @@ import org.apache.avro.io.Decoder;
 import org.apache.avro.io.DecoderFactory;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,8 +28,8 @@ public class AvroService {
     private final AvroBinaryDeserializer avroBinaryDeserializer;
 
     public String generateJsonFromAvsc(String fileName) throws IOException {
-        String jsonFileName = fileName.trim().replace(".avsc", ".json");
-        try (InputStream is = Files.newInputStream(Paths.get(fileName.trim()));
+        String jsonFileName = fileName.trim().replaceAll("^(classpath:)?(.+)(\\.avsc)$", "$2.json").trim();
+        try (InputStream is = Files.newInputStream(ResourceUtils.getFile(fileName.trim()).toPath());
              PrintWriter writer = new PrintWriter(jsonFileName, StandardCharsets.UTF_8)) {
             Schema schema = new Schema.Parser().parse(is);
             Iterator<Object> it = new RandomData(schema, 1).iterator();
@@ -40,8 +41,8 @@ public class AvroService {
     public GenericRecord convertJsonToAvro(String jsonPath, String avscSchemaPath) throws IOException {
         jsonPath = jsonPath.trim();
         avscSchemaPath =  avscSchemaPath.trim();
-        try (InputStream avscIs = Files.newInputStream(Paths.get(avscSchemaPath));
-             InputStream jsonIs = Files.newInputStream(Paths.get(jsonPath))) {
+        try (InputStream avscIs = Files.newInputStream(ResourceUtils.getFile(avscSchemaPath).toPath());
+             InputStream jsonIs = Files.newInputStream(ResourceUtils.getFile(jsonPath).toPath())) {
             Schema schema = new Schema.Parser().parse(avscIs);
             DatumReader<GenericRecord> reader = new GenericDatumReader<>(schema);
             Decoder decoder = DecoderFactory.get().jsonDecoder(schema, jsonIs);

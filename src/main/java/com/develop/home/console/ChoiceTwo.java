@@ -62,11 +62,11 @@ public class ChoiceTwo {
     }
 
     protected void autoSendKafka() throws IOException {
-        userPaths.setAvscSchemaPath(manualAvscSchemaPath);
-        userPaths.setJsonFilePath(manualJsonFilePath);
-        if (isNullOrEmpty(userPaths.getAvscSchemaPath()) || isNullOrEmpty(userPaths.getJsonFilePath())) {
+        if (isNullOrEmpty(manualAvscSchemaPath) || isNullOrEmpty(manualJsonFilePath)) {
             log.warn(languageProps.getDetectedEmptyFileName());
         } else {
+            userPaths.setAvscSchemaPath(manualAvscSchemaPath);
+            userPaths.setJsonFilePath(manualJsonFilePath);
             sendMsgToKafka();
             log.info(languageProps.getSendMsgKafkaSuccess());
         }
