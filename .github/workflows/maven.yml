@@ -62,7 +62,7 @@ jobs:
       with:
         name: allure-results
         path:
-          allure-results
+          target/allure-results
         retention-days: 1
 
     - name: Terminate Testcontainers Cloud Client active sessions
