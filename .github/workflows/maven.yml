@@ -30,7 +30,7 @@ jobs:
 #        token: ${{ secrets.TC_CLOUD_TOKEN }}
     - name: Build with Maven
       run: mvn clean package --file pom.xml
-#    - name: Terminate Testcontainers Cloud Client active sessions
-#      uses: atomicjar/testcontainers-cloud-setup-action@v1
-#      with:
-#        action: terminate
+    - name: Terminate Testcontainers Cloud Client active sessions
+      uses: atomicjar/testcontainers-cloud-setup-action@v1
+      with:
+        action: terminate
