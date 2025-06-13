@@ -70,7 +70,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     name: Generate report
-    if: inputs.with_allure == 'true'
     steps:
       - uses: actions/setup-java@v4
         with:
@@ -92,7 +91,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: generate-report
     name: Report publication
-    if: inputs.with_allure == 'true'
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v4
