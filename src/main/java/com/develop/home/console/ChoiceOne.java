@@ -55,7 +55,7 @@ public class ChoiceOne {
             userPaths.setAvscSchemaPath(manualAvscSchemaPath);
             String jsonFilePath = avroService.generateJsonFromAvsc(userPaths.getAvscSchemaPath());
             userPaths.setJsonFilePath(jsonFilePath);
-            log.info(languageProps.getAvroSchemaHasBeenGeneratedSuccess(), jsonFilePath);
+            log.info(String.format(languageProps.getAvroSchemaHasBeenGeneratedSuccess(), jsonFilePath));
             userPaths.reset();
         }
     }
