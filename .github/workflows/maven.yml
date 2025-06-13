@@ -58,6 +58,7 @@ jobs:
       run: mvn clean package -DskipTests=${{ inputs.without_test }} --file pom.xml
 
     - name: Store allure results
+      if: inputs.with_allure == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: allure-results
@@ -72,6 +73,7 @@ jobs:
         action: terminate
 
   generate-report:
+    if: inputs.with_allure == 'true'
     runs-on: ubuntu-latest
     needs: build
     name: Generate report
@@ -93,6 +95,7 @@ jobs:
           retention-days: 1
 
   publish-report:
+    if: inputs.with_allure == 'true'
     runs-on: ubuntu-latest
     needs: generate-report
     name: Report publication
