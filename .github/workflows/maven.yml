@@ -50,34 +50,54 @@ jobs:
         token: ${{ secrets.TC_CLOUD_TOKEN }}
 
     - name: Build with Maven
-      run: mvn clean package -DskipTests=${{ inputs.without_test }} --file pom.xml
+      run: mvn clean package -DskipTests=${{ inputs.without_test }} --file pom.xml --alluredir=allure-results
 
-    - name: Load test report history
-      if: inputs.with_allure == 'true'
-      uses: actions/checkout@v4
-      continue-on-error: true
+    - name: Store allure results
+      uses: actions/upload-artifact@v3
       with:
-        ref: gh-pages
-        path: gh-pages
-
-    - name: Build test report
-      if: inputs.with_allure == 'true'
-      uses: simple-elf/allure-report-action@v1.7
-      with:
-        gh_pages: gh-pages
-        allure_history: allure-history
-        allure_results: build/allure-results
-
-    - name: Publish test report
-      if: inputs.with_allure == 'true'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: allure-history
+        name: allure-results
+        path:
+          allure-results
+        retention-days: 1
 
     - name: Terminate Testcontainers Cloud Client active sessions
       if: inputs.stop_tc == 'true'
       uses: atomicjar/testcontainers-cloud-setup-action@v1
       with:
         action: terminate
+
+  generate-report:
+    runs-on: ubuntu-latest
+    needs: build
+    name: Generate report
+    if: inputs.with_allure == 'true'
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.34.0/allure-2.34.0.tgz && sudo tar -zxvf allure-2.34.0.tgz -C /opt/ && sudo ln -s /opt/allure-2.34.0/bin/allure /usr/bin/allure
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+      - run: allure generate -c allure-results -o _site
+      - name: Store generated report
+        uses: actions/upload-artifact@v3
+        with:
+          name: _site
+          path:
+            _site
+          retention-days: 1
+
+  publish-report:
+    runs-on: ubuntu-latest
+    needs: generate-report
+    name: Report publication
+    if: inputs.with_allure == 'true'
+    steps:
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1.2.9
