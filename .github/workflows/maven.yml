@@ -28,6 +28,9 @@ on:
         default: false
         description: try stop test container
 
+permissions:
+  id-token: write
+
 jobs:
   build:
 
