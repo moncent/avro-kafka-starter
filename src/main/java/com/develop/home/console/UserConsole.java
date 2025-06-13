@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -16,6 +17,11 @@ public class UserConsole implements CommandLineRunner {
 
     @Value("${console.encoding:utf-8}")
     private String encoding;
+
+    @Value("${console.manual-boot.option:#{null}}")
+    private String bootOption;
+
+    private final List<String> allowedOptions = List.of("1", "2");
 
     private final ChoiceOne choiceOne;
     private final ChoiceTwo choiceTwo;
@@ -28,7 +34,15 @@ public class UserConsole implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        init();
+        if (bootOption != null && allowedOptions.contains(bootOption)) {
+            if (allowedOptions.get(0).equals(bootOption)) {//choice 1
+                choiceOne.generateJson();
+            } else {//choice 2
+                choiceTwo.autoSendKafka();
+            }
+        } else {
+            init();
+        }
     }
 
     private void init() {

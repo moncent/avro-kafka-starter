@@ -6,6 +6,9 @@ import com.develop.home.console.utils.ConsoleUtils;
 import com.develop.home.kafka.KafkaProducer;
 import lombok.RequiredArgsConstructor;
 import org.apache.avro.generic.GenericRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -16,6 +19,13 @@ import static com.develop.home.utils.StringUtils.*;
 @Component
 @RequiredArgsConstructor
 public class ChoiceTwo {
+
+    private final Logger log = LoggerFactory.getLogger(ChoiceTwo.class);
+
+    @Value("${console.manual-boot.avsc-schema-path:#{null}}")
+    private String manualAvscSchemaPath;
+    @Value("${console.manual-boot.json-file-path:#{null}}")
+    private String manualJsonFilePath;
 
     private final UserPaths userPaths = UserPaths.getInstance();
     private final AvroService avroService;
@@ -49,6 +59,17 @@ public class ChoiceTwo {
             consoleUtils.logUnknownMsg();
         }
         consoleUtils.menu();
+    }
+
+    protected void autoSendKafka() throws IOException {
+        userPaths.setAvscSchemaPath(manualAvscSchemaPath);
+        userPaths.setJsonFilePath(manualJsonFilePath);
+        if (isNullOrEmpty(userPaths.getAvscSchemaPath()) || isNullOrEmpty(userPaths.getJsonFilePath())) {
+            log.warn(languageProps.getDetectedEmptyFileName());
+        } else {
+            sendMsgToKafka();
+            log.info(languageProps.getSendMsgKafkaSuccess());
+        }
     }
 
     private void sendFileConsistingFromOtherFiles(Scanner confirmScanner) throws IOException {
