@@ -27,7 +27,7 @@ import java.util.List;
 @TestPropertySource(properties = {
         "console.manual-boot.option=2",
         "console.manual-boot.avsc-schema-path=classpath:test_schema.avsc",
-        "console.manual-boot.json-file-path:classpath:test.json"
+        "console.manual-boot.json-file-path=classpath:test.json"
 })
 public class BootOptionTwoTest extends AbstractTest {
 
