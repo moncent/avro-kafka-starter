@@ -1,0 +1,2 @@
+chcp 65001
+java -Dapp-language=en -Dconsole.manual-boot.option=2 -Dconsole.manual-boot.avsc-schema-path=test_schema.avsc -Dconsole.manual-boot.json-file-path=test.json -Dapp.log.logs=avro_kafka_starter.log -Dapp.log.log-level=info -Dapp.log.max-file-log-size=5MB -Dspring.main.banner-mode=LOG -Dfile.encoding=UTF-8 -Dconsole.encoding=UTF-8 -jar avro-kafka-starter-0.0.1-SNAPSHOT.jar
