@@ -1,0 +1,66 @@
+{
+    "namespace": "com.baeldung.apache.avro.generated",
+    "type": "record",
+    "name": "Parent",
+    "fields": [
+        {
+            "name": "events",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "record",
+                    "name": "Event",
+                    "fields": [
+                        {"name": "name", "type": "string"}
+                    ]
+                }
+            }
+        },
+        {
+            "name": "task",
+            "type": {
+                "name": "task",
+                "type": "record",
+                "fields": [
+                    {
+                       "name": "status",
+                       "type": {
+                           "name":"EnumType",
+                           "type": "enum",
+                           "symbols":["DONE", "PENDING"]
+                       }
+                    },
+                    {
+                        "name": "taskInfo",
+                        "type": [
+                         {
+                            "name": "SuccessTask",
+                            "type": "record",
+                            "fields": [
+                                {
+                                    "name": "comments",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "endTime",
+                                    "type": "string"
+                                }
+                            ]
+                         },
+                         {
+                            "name": "PendingTask",
+                            "type": "record",
+                            "fields": [
+                                {
+                                    "name": "comments",
+                                    "type": "string"
+                                }
+                            ]
+                         }
+                       ]
+                    }
+                ]
+            }
+        }
+    ]
+}

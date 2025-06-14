@@ -10,13 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
 
 import java.util.Map;
 
-@Profile("prod")
+@Profile("dev")
 @Configuration
-@PropertySource(value = "file:./config.yml", factory = YamlPropertySourceFactory.class)
 @ConfigurationProperties(prefix = "kafka.producer")
 @NoArgsConstructor
 @AllArgsConstructor
