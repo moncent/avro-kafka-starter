@@ -1,2 +1,2 @@
 chcp 866
-java -Dapp-language=ru -Dconsole.manual-boot.option=1 -Dconsole.manual-boot.avsc-schema-path=schema.avsc -Dapp.log.logs=avro_kafka_starter.log -Dapp.log.log-level=info -Dapp.log.max-file-log-size=5MB -Dspring.main.banner-mode=LOG -Dfile.encoding=cp866 -Dconsole.encoding=cp866 -jar avro-kafka-starter-0.0.1-SNAPSHOT.jar
+java -Dapp-language=ru -Dconsole.manual-boot.option=1 -Dconsole.manual-boot.avsc-schema-path=schema.avsc -Dapp.log.logs=avro_kafka_starter.log -Dapp.log.log-level=info -Dapp.log.max-file-log-size=5MB -Dspring.main.banner-mode=LOG -Dfile.encoding=cp866 -Dconsole.encoding=cp866 -jar avro-kafka-starter-1.3.0.jar
